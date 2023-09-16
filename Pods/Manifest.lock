@@ -1,0 +1,16 @@
+PODS:
+  - Netjob (1.0.0)
+
+DEPENDENCIES:
+  - Netjob (from `./Netjob`)
+
+EXTERNAL SOURCES:
+  Netjob:
+    :path: "./Netjob"
+
+SPEC CHECKSUMS:
+  Netjob: 594c9a29e52e37b3c5bdcc4a22f95117bade8c47
+
+PODFILE CHECKSUM: 0359e7f01251e600fe76b3ae92fc9ee9d19e5cfb
+
+COCOAPODS: 1.11.2

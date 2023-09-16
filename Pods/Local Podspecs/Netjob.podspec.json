@@ -1,0 +1,21 @@
+{
+  "name": "Netjob",
+  "version": "1.0.0",
+  "summary": "Networking SDK",
+  "homepage": "Development only yet",
+  "license": {
+    "type": "MIT",
+    "file": "LICENSE"
+  },
+  "authors": "MRSOOL",
+  "platforms": {
+    "ios": "10.0"
+  },
+  "source_files": "Netjob/**/*.{swift}",
+  "module_name": "Netjob",
+  "source": {
+    "path": "."
+  },
+  "swift_versions": "5.0",
+  "swift_version": "5.0"
+}

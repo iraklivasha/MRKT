@@ -1,0 +1,6 @@
+framework module Netjob {
+  umbrella header "Netjob-umbrella.h"
+
+  export *
+  module * { export * }
+}
