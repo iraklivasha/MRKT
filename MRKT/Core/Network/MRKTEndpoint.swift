@@ -92,11 +92,4 @@ extension MRKTEndpoint {
     }
 }
 
-typealias MRKTApiCallback<T> = (Swift.Result<T, MKRTError>) -> Void
-
-class MRKTResponse<T: Codable>: Codable {
-    private(set) var result: T?
-    private(set) var error: MKRTError?
-}
-
 class AnyCodable: Codable {}

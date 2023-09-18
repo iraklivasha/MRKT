@@ -11,7 +11,9 @@ struct LoadingButton: View {
     
     let loading: Bool
     let title: String
+    let enabled: Bool
     let action: () -> Void
+    
     var body: some View {
         HStack(alignment: .center, spacing: 12, content: {
             Button(title) {
@@ -21,8 +23,7 @@ struct LoadingButton: View {
             .padding(.top, 8)
             .padding(.bottom, 8)
             .padding(.trailing, loading ? 0 : 8)
-            .foregroundColor(.white)
-           
+            .foregroundColor(enabled ? .white : .red)
             ProgressView()
                 .progressViewStyle(CircularProgressViewStyle(tint: .white))
                 .padding(EdgeInsets(top: 8,
@@ -30,8 +31,7 @@ struct LoadingButton: View {
                                     bottom: 8,
                                     trailing: loading ? 8 : CGFloat.leastNonzeroMagnitude)).modifier(EmptyModifier(isEmpty: !loading))
         })
-        .background(.red)
-        .clipShape(Capsule())
-        .shadow(color: .secondary, radius: 3, x: 0, y: 0)
+        .background(enabled ? .red : .white)
+        .border(.red, width: 2, cornerRadius: 0)
     }
 }

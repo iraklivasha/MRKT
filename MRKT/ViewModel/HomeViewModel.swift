@@ -6,31 +6,42 @@
 //
 
 import Combine
+import Foundation
 
 class HomeViewModel: ObservableObject {
     
     @Published private(set) var items: [Photo] = []
+    @Published private(set) var error: MRKTError?
+    
     private let api: PhotoAPIProtocol
+    private var subscription: AnyCancellable?
     
     init(api: PhotoAPIProtocol = PhotoAPI()) {
         self.api = api
+        self.fetch()
     }
     
     func fetch() {
-        _ = self.api.fetch()
+        subscription = self.api.fetch()
             .task
-            .sink { completion in
+            .replaceError(with: [])
+            .assign(to: \.items, on: self)
+    }
+    
+    func fetch1() {
+        subscription = self.api.fetch()
+            .task
+            .sink(receiveCompletion: { completion in
                 switch completion {
-                    case .finished:
-                        print("finished")
-                        break
-                    case .failure(let error):
-                        print("error:\(error)")
-                        break
+                case .finished:
+                    debugPrint("Photos fetched")
+                    break
+                case .failure(let e):
+                    debugPrint("Error: \(e)")
+                    break
                 }
-
-        } receiveValue: {[weak self] resp in
-            self?.items = resp.result ?? []
-        }
+            }, receiveValue: { [weak self] result in
+                self?.items = result
+            })
     }
 }

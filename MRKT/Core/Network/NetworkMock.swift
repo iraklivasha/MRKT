@@ -11,19 +11,18 @@ import Combine
 
 class NetworkMock: Network {
     
-    private lazy var jsonObject = [String: Any]()
+    private var jsonObject: Data?
     private lazy var stringResponse = ""
     
     init(mockURL: URL) {
         if let data = try? Data(contentsOf: mockURL) {
-            self.jsonObject = data.dictionary
+            self.jsonObject = data
         }
     }
     
     init(file: String, ext: String = "json", fromBundle bundle: Bundle = Bundle.main) {
-        if let url = bundle.url(forResource: file, withExtension: ext),
-            let data = try? Data(contentsOf: url) {
-            self.jsonObject = data.dictionary
+        if let url = bundle.url(forResource: file, withExtension: ext) {
+           self.jsonObject = try? Data(contentsOf: url)
         }
     }
     
@@ -36,11 +35,9 @@ class NetworkMock: Network {
     }
     
     func apiResponse() -> AnyPublisher<URLSession.DataTaskPublisher.Output, URLError> {
-            let response = HTTPURLResponse()
-            let data = self.jsonObject.data
-            return Just((data: data, response: response))
-                .setFailureType(to: URLError.self)
-                .eraseToAnyPublisher()
+        let response = HTTPURLResponse()
+        return Just((data: self.jsonObject ?? Data(), response: response))
+            .setFailureType(to: URLError.self)
+            .eraseToAnyPublisher()
     }
-
 }

@@ -8,18 +8,19 @@
 import Foundation
 
 protocol UserAPIProtocol: AnyObject {
-    func login(username: String, passwrod: String) -> APIRequest<MRKTResponse<User>>
-    func signup(username: String, passwrod: String, age: Int) -> APIRequest<MRKTResponse<User>>
+    func login(username: String, passwrod: String) -> APIRequest<User>
+    func signup(username: String, passwrod: String, age: Int) -> APIRequest<User>
 }
 
 class UserAPI: BaseAPI, UserAPIProtocol {
     
-    func login(username: String, passwrod: String) -> APIRequest<MRKTResponse<User>> {
-        let endpoint = Router.user.login(request: LoginRequest(username: username, password: passwrod))
+    func login(username: String, passwrod: String) -> APIRequest<User> {
+        let endpoint = Router.user.login(request: LoginRequest(username: username,
+                                                               password: passwrod))
         return super.request(endpoint: endpoint)
     }
     
-    func signup(username: String, passwrod: String, age: Int) -> APIRequest<MRKTResponse<User>> {
+    func signup(username: String, passwrod: String, age: Int) -> APIRequest<User> {
         let endpoint = Router.user.signup(request: SignupRequest(username: username,
                                                                  password: passwrod,
                                                                  age: age))

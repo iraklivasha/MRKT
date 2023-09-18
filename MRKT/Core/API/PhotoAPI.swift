@@ -8,11 +8,11 @@
 import Foundation
 
 protocol PhotoAPIProtocol: AnyObject {
-    func fetch() -> APIRequest<MRKTResponse<[Photo]>>
+    func fetch() -> APIRequest<[Photo]>
 }
 
 class PhotoAPI: BaseAPI, PhotoAPIProtocol {
-    func fetch() -> APIRequest<MRKTResponse<[Photo]>> {
+    func fetch() -> APIRequest<[Photo]> {
         let endpoint = Router.photo.fetch(request: BaseRequest())
         return super.request(endpoint: endpoint)
     }

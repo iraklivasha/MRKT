@@ -45,6 +45,7 @@
 		38BC29432AB5EAAA002A8D93 /* Router+Photo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38BC29422AB5EAAA002A8D93 /* Router+Photo.swift */; };
 		38BC29452AB5ED76002A8D93 /* photos-resp.json in Resources */ = {isa = PBXBuildFile; fileRef = 38BC29442AB5ED76002A8D93 /* photos-resp.json */; };
 		38BC29472AB5FFBF002A8D93 /* doc.txt in Resources */ = {isa = PBXBuildFile; fileRef = 38BC29462AB5FFBF002A8D93 /* doc.txt */; };
+		38BC294A2AB853CE002A8D93 /* Consts.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38BC29492AB853CE002A8D93 /* Consts.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -87,6 +88,7 @@
 		38BC29422AB5EAAA002A8D93 /* Router+Photo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Router+Photo.swift"; sourceTree = "<group>"; };
 		38BC29442AB5ED76002A8D93 /* photos-resp.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = "photos-resp.json"; sourceTree = "<group>"; };
 		38BC29462AB5FFBF002A8D93 /* doc.txt */ = {isa = PBXFileReference; lastKnownFileType = text; path = doc.txt; sourceTree = "<group>"; };
+		38BC29492AB853CE002A8D93 /* Consts.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Consts.swift; sourceTree = "<group>"; };
 		777A6DC147E3375EA70C569A /* Pods-MRKT.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MRKT.debug.xcconfig"; path = "Target Support Files/Pods-MRKT/Pods-MRKT.debug.xcconfig"; sourceTree = "<group>"; };
 		AC9CF476CCCC0074D0C55564 /* Pods_MRKT.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MRKT.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -202,6 +204,7 @@
 		385E3B602AB4CE4B0052B0A8 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				38BC29482AB853C6002A8D93 /* Utils */,
 				385E3B5B2AB4CDF70052B0A8 /* Components */,
 				385E3B8A2AB4DF220052B0A8 /* OnboardingView.swift */,
 				385E3B8C2AB4DF5A0052B0A8 /* LoginView.swift */,
@@ -283,6 +286,14 @@
 				38BC292E2AB4FF49002A8D93 /* Mocks */,
 			);
 			path = API;
+			sourceTree = "<group>";
+		};
+		38BC29482AB853C6002A8D93 /* Utils */ = {
+			isa = PBXGroup;
+			children = (
+				38BC29492AB853CE002A8D93 /* Consts.swift */,
+			);
+			path = Utils;
 			sourceTree = "<group>";
 		};
 		8FE03EDC438741DF6D56798D /* Pods */ = {
@@ -430,6 +441,7 @@
 				385E3B8D2AB4DF5A0052B0A8 /* LoginView.swift in Sources */,
 				38BC29322AB50F85002A8D93 /* MKRTError.swift in Sources */,
 				385E3B772AB4D25F0052B0A8 /* LoginRequest.swift in Sources */,
+				38BC294A2AB853CE002A8D93 /* Consts.swift in Sources */,
 				38BC293B2AB5E735002A8D93 /* DetailView.swift in Sources */,
 				385E3B912AB4E3FE0052B0A8 /* BorderedNavigationLink.swift in Sources */,
 				385E3B702AB4D19A0052B0A8 /* Coding.swift in Sources */,

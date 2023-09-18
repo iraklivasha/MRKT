@@ -14,32 +14,31 @@ struct SignupView: View {
     var body: some View {
         VStack(alignment: .center, spacing: 12.0) {
             Text("Sign up").font(.largeTitle)
-            TextField("username", text: $model.username)
-                .frame(height: 55)
-                    .textFieldStyle(PlainTextFieldStyle())
-                    .padding([.horizontal], 4)
-                    .cornerRadius(16)
-                    .overlay(RoundedRectangle(cornerRadius: 16).stroke(Color.gray))
-                    .padding([.horizontal], 24)
-            TextField("password", text: $model.password)
-                .frame(height: 55)
-                    .textFieldStyle(PlainTextFieldStyle())
-                    .padding([.horizontal], 4)
-                    .cornerRadius(16)
-                    .overlay(RoundedRectangle(cornerRadius: 16).stroke(Color.gray))
-                    .padding([.horizontal], 24)
+            
+            BorderedTextInput(text: $model.username,
+                              placeholder: "username",
+                              validationError: $model.inlineErrorForUsername.wrappedValue)
+            
+            BorderedTextInput(text: $model.password,
+                              placeholder: "password",
+                              validationError: $model.inlineErrorForPassword.wrappedValue)
+            
             HStack {
                 Text("Age: ")
                 Picker("Age", selection: $model.ageIndex) {
-                    ForEach(18 ..< 100) { number in
-                                            Text("\(number)")
-                                        }
+                    ForEach(Consts.AGE_RANGE, id: \.self) { number in
+                        Text("\(number)")
+                    }
                 }
                 .pickerStyle(.menu)
             }
-            LoadingButton(loading: model.loading, title: "Sign up", action: {
+            
+            LoadingButton(loading: model.loading, title: "Sign up",
+                          enabled: $model.isValid.wrappedValue,
+                          action: {
                 model.signup()
-            }).frame(width: 120, height: 54, alignment: .center)
+            })
+            .disabled(!$model.isValid.wrappedValue)
         }
         .padding(EdgeInsets(top: 0, leading: 12, bottom: 0, trailing: 12))
     }

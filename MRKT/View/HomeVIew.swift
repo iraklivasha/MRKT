@@ -34,7 +34,8 @@ struct HomeView: View {
     @StateObject private var dataModel = HomeViewModel()
     
     private static let initialColumns = 3
-    @State private var gridColumns = Array(repeating: GridItem(.flexible()), count: initialColumns)
+    @State private var gridColumns = Array(repeating: GridItem(.flexible()),
+                                           count: initialColumns)
     @State private var numColumns = initialColumns
     
     private var columnsTitle: String {
@@ -58,15 +59,12 @@ struct HomeView: View {
                     .padding()
                 }
                 Spacer()
-                LoadingButton(loading: false, title: "Log out", action: {
+                LoadingButton(loading: false, title: "Log out", enabled: true, action: {
                     loginVM.logout()
                 }).frame(width: 120, height: 54, alignment: .center)
             }
             .navigationBarTitle("Photos")
             .navigationBarTitleDisplayMode(.inline)
-            .onAppear {
-                dataModel.fetch()
-            }
         }
     }
 }

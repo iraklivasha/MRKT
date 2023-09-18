@@ -10,8 +10,8 @@ import Combine
 import Foundation
 
 public struct NetworkRequest {
-    public let publisher: AnyPublisher<URLSession.DataTaskPublisher.Output, URLSession.DataTaskPublisher.Failure>
-    public init(publisher: AnyPublisher<URLSession.DataTaskPublisher.Output, URLSession.DataTaskPublisher.Failure>) {
+    public let publisher: AnyPublisher<URLSession.DataTaskPublisher.Output, URLError>
+    public init(publisher: AnyPublisher<URLSession.DataTaskPublisher.Output, URLError>) {
         self.publisher = publisher
     }
 }
